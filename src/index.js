@@ -30,8 +30,6 @@ let count = 0;
 //client (emit) --> server (receive) -- increment
 
 io.on('connection', (socket) => {
-  console.log('new web socket connection');
-
   socket.on('join', (options, callback) => {
     const { error, user } = addUser({ id: socket.id, ...options });
 
@@ -96,4 +94,4 @@ io.on('connection', (socket) => {
   });
 });
 
-server.listen(port, () => console.log(`Server is up on ${port}`));
+server.listen(port);

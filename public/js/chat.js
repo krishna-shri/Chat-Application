@@ -44,7 +44,6 @@ const autoScroll = () => {
 };
 
 socket.on('message', (message) => {
-  console.log(message);
   const html = Mustache.render(messageTemplate, {
     username: message.username,
     message: message.text,
@@ -55,7 +54,6 @@ socket.on('message', (message) => {
 });
 
 socket.on('locationMessage', (mess) => {
-  console.log(mess);
   const html = Mustache.render(locationMessageTemplate, {
     username: mess.username,
     url: mess.url,
@@ -80,10 +78,6 @@ messageForm.addEventListener('submit', (e) => {
     messageFormButton.removeAttribute('disabled');
     messageFormInput.value = '';
     messageFormInput.focus();
-    if (e) {
-      return console.log(e);
-    }
-    console.log('Message delivered');
   });
 });
 
@@ -101,7 +95,6 @@ sendLocationButton.addEventListener('click', () => {
       },
       () => {
         sendLocationButton.removeAttribute('disabled');
-        console.log('Location Shared');
       }
     );
   });
